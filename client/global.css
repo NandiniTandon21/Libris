@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Libris Green Theme
+   * Color Palette:
+   * - Dark Green: #0A400C
+   * - Medium Green: #819067
+   * - Light Green: #B1AB86
+   * - Cream: #FEFAE0
+   */
+  :root {
+    --background: 60 29% 96%; /* #FEFAE0 */
+    --foreground: 120 61% 15%; /* #0A400C */
+
+    --card: 0 0% 100%; /* White cards */
+    --card-foreground: 120 61% 15%; /* #0A400C */
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 120 61% 15%;
+
+    --primary: 120 61% 15%; /* #0A400C */
+    --primary-foreground: 60 29% 96%; /* #FEFAE0 */
+
+    --secondary: 82 18% 46%; /* #819067 */
+    --secondary-foreground: 60 29% 96%;
+
+    --muted: 60 16% 62%; /* #B1AB86 */
+    --muted-foreground: 120 61% 15%;
+
+    --accent: 82 18% 46%; /* #819067 */
+    --accent-foreground: 60 29% 96%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 60 16% 85%;
+    --input: 60 16% 85%;
+    --ring: 120 61% 15%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 60 29% 96%;
+    --sidebar-foreground: 120 61% 15%;
+    --sidebar-primary: 120 61% 15%;
+    --sidebar-primary-foreground: 60 29% 96%;
+    --sidebar-accent: 82 18% 46%;
+    --sidebar-accent-foreground: 60 29% 96%;
+    --sidebar-border: 60 16% 85%;
+    --sidebar-ring: 120 61% 15%;
+  }
+
+  .dark {
+    --background: 120 61% 8%; /* Darker version of #0A400C */
+    --foreground: 60 29% 96%; /* #FEFAE0 */
+
+    --card: 120 50% 12%; /* Slightly lighter than background */
+    --card-foreground: 60 29% 96%;
+
+    --popover: 120 50% 12%;
+    --popover-foreground: 60 29% 96%;
+
+    --primary: 60 29% 96%; /* #FEFAE0 */
+    --primary-foreground: 120 61% 15%; /* #0A400C */
+
+    --secondary: 82 18% 26%; /* Darker version of #819067 */
+    --secondary-foreground: 60 29% 96%;
+
+    --muted: 82 18% 20%;
+    --muted-foreground: 60 16% 62%;
+
+    --accent: 82 18% 26%;
+    --accent-foreground: 60 29% 96%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 29% 96%;
+
+    --border: 82 18% 20%;
+    --input: 82 18% 20%;
+    --ring: 60 29% 96%;
+
+    --sidebar-background: 120 61% 8%;
+    --sidebar-foreground: 60 29% 96%;
+    --sidebar-primary: 60 29% 96%;
+    --sidebar-primary-foreground: 120 61% 15%;
+    --sidebar-accent: 82 18% 20%;
+    --sidebar-accent-foreground: 60 29% 96%;
+    --sidebar-border: 82 18% 20%;
+    --sidebar-ring: 60 29% 96%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+
+  /* Line clamp utility */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Gradient animations */
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    background: rgba(254, 250, 224, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(129, 144, 103, 0.2);
+  }
+
+  /* Enhanced focus styles */
+  .focus-visible\:ring-gradient:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--primary));
+  }
+
+  /* Libris gradient background */
+  .libris-gradient {
+    background: linear-gradient(135deg, #FEFAE0 0%, #B1AB86 50%, #819067 100%);
+  }
+
+  .libris-gradient-dark {
+    background: linear-gradient(135deg, #0A400C 0%, #819067 50%, #B1AB86 100%);
+  }
+
+  /* Hero section styles */
+  .hero-pattern {
+    background-image:
+            radial-gradient(circle at 25% 25%, rgba(129, 144, 103, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 75% 75%, rgba(177, 171, 134, 0.1) 0%, transparent 50%);
+  }
+
+  /* Floating animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Subtle glow effect */
+  .glow-green {
+    box-shadow: 0 0 20px rgba(10, 64, 12, 0.3);
+  }
+}
